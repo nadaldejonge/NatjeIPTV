@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Keep the supplied badge inside the adaptive icon's circular safe area. -->
+<inset xmlns:android="http://schemas.android.com/apk/res/android"
+    android:inset="22%" android:drawable="@drawable/natje_joint_mark" />

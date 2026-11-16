@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  TextureView als surface: een SurfaceView boven de Capacitor-WebView geeft
+  z-order/clippingproblemen (hole punching). TextureView rendert in de normale
+  view-hiërarchie en kan wél betrouwbaar als overlay. Kost iets meer GPU-werk,
+  hardwaredecoding blijft gewoon actief.
+-->
+<androidx.media3.ui.PlayerView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/tvPlayerView"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/black"
+    app:surface_type="texture_view"
+    app:use_controller="true"
+    app:show_buffering="when_playing"
+    app:resize_mode="fit" />

@@ -1,0 +1,2 @@
+public/mpv/mpv.exe filter=lfs diff=lfs merge=lfs -text
+android/gradlew text eol=lf

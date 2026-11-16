@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">Natje\'s IPTV-player</string>
+    <string name="title_activity_main">Natje\'s IPTV-player</string>
+    <string name="package_name">nl.natje.iptvplayer</string>
+    <string name="custom_url_scheme">nl.natje.iptvplayer</string>
+</resources>

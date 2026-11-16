@@ -1,0 +1,23 @@
+node_modules/
+dist/
+release/
+*.log
+.env
+.env.local
+settings.json
+.cache/
+.env.*
+!.env.example
+artifacts/
+logs/
+*.tsbuildinfo
+__pycache__/
+*.pyc
+*.jks
+*.keystore
+local.properties
+
+# Local task notes and unused modelling file
+/Prompt.txt
+/fixprompt.txt
+/new.blend

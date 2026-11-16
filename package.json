@@ -1,0 +1,91 @@
+{
+  "name": "natjes-iptv-player",
+  "version": "0.1.0",
+  "description": "Natje's IPTV-player - a local Windows IPTV/M3U desktop player.",
+  "author": "Natje",
+  "private": true,
+  "type": "module",
+  "main": "dist/main/index.js",
+  "scripts": {
+    "dev": "concurrently -k \"vite --host 127.0.0.1\" \"wait-on tcp:5173 && cross-env VITE_DEV_SERVER_URL=http://127.0.0.1:5173 electron .\"",
+    "dev:renderer": "vite --host 127.0.0.1",
+    "dev:electron": "wait-on tcp:5173 && cross-env VITE_DEV_SERVER_URL=http://127.0.0.1:5173 electron .",
+    "build": "node scripts/clean-renderer.mjs && tsc -p tsconfig.main.json && tsc -p tsconfig.preload.json && vite build",
+    "build:renderer": "vite build",
+    "build:windows": "npm run build",
+    "dist": "node scripts/clean-renderer.mjs && tsc -p tsconfig.main.json && tsc -p tsconfig.preload.json && vite build && electron-builder --win nsis",
+    "android:sync": "npm run build && cap sync android",
+    "android:open": "cap open android",
+    "android:build:debug": "npm run android:sync && cd android && gradlew.bat assembleDebug",
+    "android:install": "cd android && gradlew.bat installDebug",
+    "android:test": "npm run android:build:debug",
+    "epg:search": "node tools/epg-search-lab/server.mjs",
+    "typecheck": "tsc --noEmit -p tsconfig.renderer.json && tsc --noEmit -p tsconfig.main.json && tsc --noEmit -p tsconfig.preload.json",
+    "test:tv:unit": "node scripts/test-tv-unit.mjs",
+    "test:tv:browser": "node scripts/test-tv-browser.mjs && node scripts/test-tv-matrix.mjs"
+  },
+  "dependencies": {
+    "@capacitor/android": "^8.4.1",
+    "@capacitor/app": "^8.1.0",
+    "@capacitor/cli": "^8.4.1",
+    "@capacitor/core": "^8.4.1",
+    "@capacitor/preferences": "^8.0.1"
+  },
+  "devDependencies": {
+    "@types/node": "^24.0.0",
+    "@types/react": "^19.0.0",
+    "@types/react-dom": "^19.0.0",
+    "@vitejs/plugin-react": "^5.0.0",
+    "concurrently": "^9.0.0",
+    "cross-env": "^10.0.0",
+    "electron": "^36.0.0",
+    "electron-builder": "^26.0.0",
+    "hls.js": "^1.6.13",
+    "lucide-react": "^0.468.0",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "typescript": "^5.8.0",
+    "vite": "^7.0.0",
+    "wait-on": "^8.0.0"
+  },
+  "build": {
+    "appId": "nl.natje.iptvplayer",
+    "productName": "Natje's IPTV-player",
+    "directories": {
+      "output": "release"
+    },
+    "files": [
+      "dist/**/*",
+      "package.json"
+    ],
+    "extraResources": [
+      {
+        "from": "public/mpv",
+        "to": "mpv",
+        "filter": [
+          "**/*"
+        ]
+      },
+      {
+        "from": "public/icons",
+        "to": "icons",
+        "filter": [
+          "**/*"
+        ]
+      }
+    ],
+    "win": {
+      "icon": "public/icons/natje-app.ico",
+      "target": [
+        "nsis"
+      ]
+    },
+    "nsis": {
+      "oneClick": false,
+      "perMachine": false,
+      "allowToChangeInstallationDirectory": true,
+      "createDesktopShortcut": true,
+      "createStartMenuShortcut": true
+    }
+  }
+}

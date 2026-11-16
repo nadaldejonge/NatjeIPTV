@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="nl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Natje EPG Search Lab</title>
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body>
+    <main class="shell">
+      <header class="topbar">
+        <div class="brand">
+          <div class="brand-mark">EPG</div>
+          <div>
+            <h1>EPG Search Lab</h1>
+            <p>Zoek lokaal in actuele zender-info zonder de player te belasten.</p>
+          </div>
+        </div>
+        <div class="server-state" id="serverState">Opstarten...</div>
+      </header>
+
+      <section class="search-panel">
+        <div class="search-line">
+          <label class="search-box">
+            <span>Zoekterm</span>
+            <input id="queryInput" type="search" autocomplete="off" placeholder="bijv. voetbal, nieuws, film, NOS..." />
+          </label>
+          <button id="searchButton" type="button">Zoeken</button>
+          <button id="stopButton" class="ghost" type="button" disabled>Stop</button>
+        </div>
+        <div class="meta-line">
+          <span id="scopeText">Landen laden...</span>
+          <button id="clearCacheButton" class="link-button" type="button">EPG cache legen</button>
+        </div>
+      </section>
+
+      <section class="country-panel">
+        <div class="panel-heading">
+          <div>
+            <h2>Landenfilter</h2>
+            <p>Uitgezette landen worden niet gescand.</p>
+          </div>
+          <div class="country-actions">
+            <button id="enableAllButton" class="ghost" type="button">Alles aan</button>
+            <button id="disableAllButton" class="ghost" type="button">Alles uit</button>
+          </div>
+        </div>
+        <div class="country-grid" id="countryGrid"></div>
+      </section>
+
+      <section class="scan-panel">
+        <div class="progress-card">
+          <div class="progress-ring" id="progressRing"><span id="progressPercent">0%</span></div>
+          <div class="progress-copy">
+            <h2 id="progressTitle">Klaar</h2>
+            <p id="progressDetail">Typ iets en klik zoeken.</p>
+          </div>
+          <div class="stat-grid">
+            <div><strong id="processedStat">0</strong><span>gescand</span></div>
+            <div><strong id="matchStat">0</strong><span>matches</span></div>
+            <div><strong id="cacheStat">0</strong><span>EPG cache</span></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="results-section">
+        <div class="panel-heading">
+          <div>
+            <h2>Resultaten</h2>
+            <p id="resultHint">Matches verschijnen direct. Per zender scant hij max 3 programma's terug en 3 vooruit.</p>
+          </div>
+          <div class="result-count" id="resultCount">0</div>
+        </div>
+        <div class="results" id="results"></div>
+      </section>
+    </main>
+
+    <script type="module" src="/app.js?v=scan-stable-2"></script>
+  </body>
+</html>
