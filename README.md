@@ -6,7 +6,7 @@ Natje's IPTV player for **Android TV and Windows**, built with React, TypeScript
 
 [Download the latest Android TV APK](https://github.com/nadaldejonge/NatjeIPTV/releases/latest).
 
-The current Android release is **0.1.15-icon**. It includes the repeated-search fix, automatic Dutch subtitles, manual subtitle/audio selection and the full-resolution launcher icon. The downloadable APK is debug-signed. Install it over an existing compatible NatjeIPTV installation to retain app data.
+The current Android release is **0.1.16-branding**. It includes NatjeTube-matched launcher resource sizes and margins with glossy black/white IPTV artwork, the repeated-search fix, automatic Dutch subtitles and manual subtitle/audio selection. The downloadable APK is debug-signed. Install it over an existing compatible NatjeIPTV installation to retain app data.
 
 ## Features
 

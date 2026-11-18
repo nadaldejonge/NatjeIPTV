@@ -11,10 +11,11 @@
 
     <application
         android:allowBackup="true"
-        android:banner="@drawable/natje_iptv_shelf"
-        android:icon="@drawable/natje_iptv_launcher_hd"
+        android:banner="@mipmap/natje_app_banner"
+        android:icon="@mipmap/natje_app_icon"
         android:label="@string/app_name"
-        android:roundIcon="@drawable/natje_iptv_launcher_hd"
+        android:logo="@mipmap/natje_app_logo"
+        android:roundIcon="@mipmap/natje_app_icon"
         android:supportsRtl="true"
         android:usesCleartextTraffic="true"
         android:theme="@style/AppTheme">
